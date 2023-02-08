@@ -1,16 +1,21 @@
 
 #include <iostream>
 #include "Contact.hpp"
-
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void)
 {
-    this->index = 1;
+    this->index = 0;
+    this->index2 = 0;
 
-    Contact contact1;
-
-    this->tab[0] = contact1;
+    this->tab[0] = Contact();
+    this->tab[1] = Contact();
+    this->tab[2] = Contact();
+    this->tab[3] = Contact();
+    this->tab[4] = Contact();
+    this->tab[5] = Contact();
+    this->tab[6] = Contact();
+    this->tab[7] = Contact();
 
     return;
 }
@@ -22,5 +27,20 @@ PhoneBook::~PhoneBook(void)
 
 void PhoneBook:: add_contact(void)
 {
-    this->tab[0].SetContact();
+    this->tab[index].SetContact();
+    this->index++;
+}
+
+void	PhoneBook:: GetContact(void){
+
+
+    int i = 0;
+    std::cout << "       index|first name| last name| nick name" << std::endl;
+    while (i < 8 && this->tab[i].exist())
+    {
+        this->tab[i].GetContactSmall(i);
+        std::cout << std::endl;
+        i++;
+    }
+    std::cin.clear();
 }

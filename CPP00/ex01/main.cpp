@@ -12,9 +12,11 @@ int main(void)
         std::getline(std::cin, champs);
 
 
-        if (champs == "ADD")
-        {
-            
+        if (champs == "ADD"){
+          PhoneBook.add_contact();
+        }
+        if (champs == "SEARCH"){
+           PhoneBook.GetContact();
         }
     }
 }

@@ -1,15 +1,25 @@
-#include <iostream>
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
-#include "PhoneBook.hpp"
 
+#include <iostream>
 class Contact
 {
-    void SetContact(void);
 
-    std::string Name;
+    public:
+    Contact (void);
+    ~Contact (void);
+    void SetContact(void);
+    void    GetInfo(void);
+    void    GetContactSmall(int index);
+    bool     exist(void);
     private:
 
+    bool here;
+    std::string FirstName;
+    std::string LastName;
+    std::string NickName;
+    std::string PhoneNumber;
+    std::string DarkestSecret;
 };
 
 

@@ -1,6 +1,6 @@
-COMPILER = c++
+CXX = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = MyAwsomePhoneBook
 
@@ -15,7 +15,7 @@ RM = rm -f
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(COMPILER) $(FLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	$(RM) $(OBJS)
