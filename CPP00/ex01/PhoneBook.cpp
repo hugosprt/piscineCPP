@@ -35,12 +35,23 @@ void	PhoneBook:: GetContact(void){
 
 
     int i = 0;
-    std::cout << "       index|first name| last name| nick name" << std::endl;
+	int index = 0;
+    std::cout << "     index|first name| last name| nick name" << std::endl;
     while (i < 8 && this->tab[i].exist())
     {
         this->tab[i].GetContactSmall(i);
-        std::cout << std::endl;
-        i++;
+		i++;
     }
+	std::cin >> index;
+	if (this->tab[index].exist())
+	{
+		this->tab[index].FullList();
+	}
+	else
+	{
+		std::cout << "No contact for this index";
+	}
     std::cin.clear();
 }
+
+

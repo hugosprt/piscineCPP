@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include <iomanip>
 
 Contact::Contact(void){
     here = false;
@@ -54,18 +55,31 @@ void Contact::GetInfo(void){
     std::cout << this->FirstName;
 }
 
-void Contact::MakeItSmall(std::string str){
+void Contact::MakeItSmall(std::string str) {
 
-    if (str.size > 9)
+    if (str.size() > 9)
         std::cout << str.substr(0,9) << ".";
     else
+        std::cout << std::setw(10) << str;
         
 }
 
 void Contact::GetContactSmall(int index){
     
-    std::cout << index + 1;
-    std::cout << this->FirstName;
-    std::cout << this->LastName;
-    std::cout << this->NickName;
+    std::cout <<  std::setw(10) << index + 1 << "|";
+    MakeItSmall(this->FirstName);
+    std::cout << "|";
+    MakeItSmall(this->LastName);
+    std::cout << "|";
+    MakeItSmall(this->NickName);
+    std::cout << std::endl;
+}
+
+
+void Contact::FullList(void){
+    std::cout << "First name : "<< this->FirstName << std::endl;
+    std::cout << "Last name : " << this->LastName << std::endl;
+    std::cout << "NickName : " << this->NickName << std::endl;
+    std::cout << "Phone number :" << this->PhoneNumber << std::endl;
+    std::cout << "Darkest secret" <<  this->DarkestSecret << std::endl;
 }

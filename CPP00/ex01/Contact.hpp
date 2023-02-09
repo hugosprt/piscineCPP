@@ -10,7 +10,9 @@ class Contact
     ~Contact (void);
     void SetContact(void);
     void    GetInfo(void);
-    void    GetContactSmall(int index);
+    void MakeItSmall(std::string str);
+    void GetContactSmall(int index);
+    void FullList(void);
     bool     exist(void);
     private:
 

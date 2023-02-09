@@ -18,5 +18,9 @@ int main(void)
         if (champs == "SEARCH"){
            PhoneBook.GetContact();
         }
+        if (champs == "EXIT"){
+          break ;
+        }
     }
+    return (0);
 }
