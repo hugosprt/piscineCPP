@@ -50,11 +50,6 @@ bool  Contact::exist(void)
     return (false);
 }
 
-void Contact::GetInfo(void){
-    
-    std::cout << this->FirstName;
-}
-
 void Contact::MakeItSmall(std::string str) {
 
     if (str.size() > 9)
@@ -66,7 +61,7 @@ void Contact::MakeItSmall(std::string str) {
 
 void Contact::GetContactSmall(int index){
     
-    std::cout <<  std::setw(10) << index + 1 << "|";
+    std::cout <<  std::setw(10) << index << "|";
     MakeItSmall(this->FirstName);
     std::cout << "|";
     MakeItSmall(this->LastName);
@@ -81,5 +76,5 @@ void Contact::FullList(void){
     std::cout << "Last name : " << this->LastName << std::endl;
     std::cout << "NickName : " << this->NickName << std::endl;
     std::cout << "Phone number :" << this->PhoneNumber << std::endl;
-    std::cout << "Darkest secret" <<  this->DarkestSecret << std::endl;
+    std::cout << "Darkest secret :" <<  this->DarkestSecret << std::endl;
 }

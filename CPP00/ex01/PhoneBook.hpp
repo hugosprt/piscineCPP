@@ -13,13 +13,14 @@ class PhoneBook{
 	~PhoneBook(void);
 
 	void add_contact();
-	void	GetContact();
+	int	GetContact();
 	private:
 
 	int index;
 	int index2;
+	std::string index3;
 
-	Contact tab[8];
+	Contact tab[9];
 
 
 };

@@ -1,6 +1,7 @@
 
 #include <iostream>
 
+
 int main(int ac, char **av)
 {
 	int i = 1;
@@ -18,7 +19,7 @@ int main(int ac, char **av)
 			while (av[i][j])
 			{	
 					if (av[i][j] >= 'a' && av[i][j] <= 'z')
-						av[i][j] -= 32;
+						av[i][j] = toupper(av[i][j]);
 					j++;
 			}
 		std::cout << av[i];

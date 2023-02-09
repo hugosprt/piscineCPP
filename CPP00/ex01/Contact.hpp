@@ -9,14 +9,13 @@ class Contact
     Contact (void);
     ~Contact (void);
     void SetContact(void);
-    void    GetInfo(void);
-    void MakeItSmall(std::string str);
     void GetContactSmall(int index);
     void FullList(void);
     bool     exist(void);
     private:
 
     bool here;
+    void MakeItSmall(std::string str);
     std::string FirstName;
     std::string LastName;
     std::string NickName;
