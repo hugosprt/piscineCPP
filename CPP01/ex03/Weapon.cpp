@@ -1,9 +1,15 @@
 #include "Weapon.hpp"
 
 
- Weapon::Weapon(std::string name)
+ Weapon::Weapon(std::string type)
 {
-	this->_name = name;
+	this->_type = type;
+	return ;
+}
+
+ Weapon::Weapon(void)
+{
+	this->_type = "default";
 	return ;
 }
 
