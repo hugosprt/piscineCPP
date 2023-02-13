@@ -29,14 +29,14 @@ void	Harl::error(void){
 
 void Harl::complain(std::string level){
 
-	void (Harl::*pointeur[4])(void) = {
+	void (Harl::*pointeur_to_t[4])(void) = {
 		&Harl::debug,
 		&Harl::info,
 		&Harl::warning,
 		&Harl::error
 	};
 
-	std::string tab[4]{
+	std::string tab[4] = {
 		"DEBUG",
 		"INFO",
 		"WARNING",
@@ -47,9 +47,10 @@ void Harl::complain(std::string level){
 	while (i < 4)
 	{
 		if (tab[i] == level)
-			return this->*pointeur[i];
+			return (this->*pointeur_to_t[i])();
+		i++;
 	}
 
-
+	return ;
 
 }
