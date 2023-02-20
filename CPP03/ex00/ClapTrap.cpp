@@ -62,7 +62,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "claptrap dcd rip" << std::endl;
 		return ;
 	}
-	this->_hitpoint = this->_hitpoint - amount;
+	std::cout << "ClapTrap " << this->_name << "repaired " << amount << std::endl;
+	this->_hitpoint = this->_hitpoint + amount;
 	this->_nrjpoint--;
 }
 
@@ -73,5 +74,6 @@ void ClapTrap::takeDamage(unsigned int amount)
 		std::cout << "claptrap dcd rip" << std::endl;
 		return ;
 	}
+	std::cout << "ClapTrap " << this->_name << "take " << amount << std::endl;
 	this->_hitpoint = this->_hitpoint - amount;
 }
