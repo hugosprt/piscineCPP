@@ -43,6 +43,16 @@ FlagTrap &  FlagTrap::operator=(FlagTrap const & src)
 	return ;
 }
 
+void FlagTrap::attack(const std::string & target)
+{
+	if (this->_nrjpoint < 0 || this->_hitpoint < 0)
+	{
+		std::cout << "FlagTrap dcd rip" << std::endl;
+		return ;
+	}
+	this->_nrjpoint--;
+	std::cout << "FlagTrap " << this->_name << " attacks " << target << ", causing " << this->_attackdamage << " points of damage!" << std::endl;
+}
 
 void FlagTrap::highFivesGuys(void)
 {

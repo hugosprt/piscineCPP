@@ -8,6 +8,7 @@ class FlagTrap : public ClapTrap
 {	
 	public :
 
+	void attack(const std::string & target);
 	void highFivesGuys(void);
 	FlagTrap(void);
 	FlagTrap(std::string name);

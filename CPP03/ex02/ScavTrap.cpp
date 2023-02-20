@@ -1,7 +1,7 @@
 #include "ScavTrap.hpp"
 
-
  ScavTrap::ScavTrap(void) : ClapTrap()
+
 {
 	std::cout << "Constructor called Scav" << std ::endl;
 	this->_nrjpoint = 50;
@@ -13,6 +13,7 @@
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Constructor with name called Scav" << std ::endl;
+	this->_name = name;
 	this->_nrjpoint = 50;
 	this->_attackdamage = 20;
 	this->_hitpoint = 100;
@@ -41,6 +42,17 @@ ScavTrap &  ScavTrap::operator=(ScavTrap const & src)
 {
 	std::cout << "Destructor called Scav" << std ::endl;
 	return ;
+}
+
+void ScavTrap::attack(const std::string & target)
+{
+	if (this->_nrjpoint < 0 || this->_hitpoint < 0)
+	{
+		std::cout << "ScavTrap dcd rip" << std::endl;
+		return ;
+	}
+	this->_nrjpoint--;
+	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackdamage << " points of damage!" << std::endl;
 }
 
 
