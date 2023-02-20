@@ -6,8 +6,6 @@
 
 class ScavTrap : public ClapTrap
 {
-	private:
-	void guardGate();
 	public :
 
 	ScavTrap(void);
@@ -15,6 +13,7 @@ class ScavTrap : public ClapTrap
 	ScavTrap(const ScavTrap & src);
 	ScavTrap & operator=(ScavTrap const  & src);
 	~ScavTrap(void);
+	void guardGate();
 };
 
 #endif

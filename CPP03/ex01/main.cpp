@@ -52,5 +52,5 @@ int main(void)
 	bonhome4.beRepaired(9);
 	bonhome4.takeDamage(19);
 	bonhome4.beRepaired(9);
-
+	bonhome4.guardGate();
 }
