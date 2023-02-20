@@ -1,7 +1,8 @@
 #include "ScavTrap.hpp"
 #include "ScavTrap.hpp"
 
- ScavTrap::ScavTrap(void)
+ ScavTrap::ScavTrap(void) : ClapTrap()
+
 {
 	std::cout << "Constructor called Scav" << std ::endl;
 	this->_nrjpoint = 50;
@@ -10,7 +11,7 @@
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Constructor with name called Scav" << std ::endl;
 	this->_name = name;
@@ -20,7 +21,7 @@ ScavTrap::ScavTrap(std::string name)
 	return ;
 }
 
-ScavTrap::ScavTrap(const ScavTrap & src)
+ScavTrap::ScavTrap(const ScavTrap & src) : ClapTrap(src)
 {
 	std::cout << "Copy constructor called Scav" << std ::endl;
 	*this = src;
