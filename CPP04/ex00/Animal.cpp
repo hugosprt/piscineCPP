@@ -11,6 +11,8 @@ Animal::Animal(const Animal & src)
 Animal Animal::operator=(const Animal &  src)
 {
 	std::cout << "|Animal| Copy assignement operator called" << std ::endl;
+	if (this == &src)
+		return (*this);
 	this->_type = src._type;
 	return (*this);
 
