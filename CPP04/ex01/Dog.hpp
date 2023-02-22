@@ -3,9 +3,13 @@
 # define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
-class Dog : public Animal
+class Dog : public Animal, public Brain
 {
+
+	private:
+	Brain* _brain;
 	public:
 	Dog(void);
 	Dog(std::string type);
@@ -14,6 +18,8 @@ class Dog : public Animal
 	virtual ~Dog(void);
 	virtual void makeSound(void) const;
 	std::string getType(void) const;
+	void setIdea(std::string idea, unsigned int i);
+	std::string getIdea(unsigned int i) const;
 };
 
 
