@@ -41,6 +41,7 @@ ClapTrap &  ClapTrap::operator=(ClapTrap const & src)
 
  ClapTrap::~ClapTrap(void)
 {
+	std::cout << "Destructor called" << std ::endl;
 	return ;
 }
 

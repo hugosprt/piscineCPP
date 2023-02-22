@@ -45,6 +45,17 @@ ScavTrap &  ScavTrap::operator=(ScavTrap const & src)
 	return ;
 }
 
+void ScavTrap::attack(const std::string & target)
+{
+	if (this->_nrjpoint < 0 || this->_hitpoint < 0)
+	{
+		std::cout << "ScavTrap dcd rip" << std::endl;
+		return ;
+	}
+	this->_nrjpoint--;
+	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackdamage << " points of damage!" << std::endl;
+}
+
 
 void ScavTrap::guardGate()
 {

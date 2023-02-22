@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+int const Fixed::_i = 8;
+
 Fixed::Fixed(void)
 {
 	this->_n = 0;
@@ -38,3 +40,5 @@ int Fixed::getRawBits(void) const {
 void Fixed::setRawBits(int const raw){
 	this->_n = raw;
 }
+
+
