@@ -16,7 +16,7 @@ class Bureaucrat{
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(const Bureaucrat & src);
 	Bureaucrat & operator=(Bureaucrat const & src);
-	~Bureaucrat(void);
+	virtual ~Bureaucrat(void);
 	std::string getName(void);
 	void		setName(std::string name);
 	void		incrGrade(void);
