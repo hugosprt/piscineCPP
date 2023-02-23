@@ -5,16 +5,18 @@
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Dog : public Animal, public Brain
+class Dog : public Animal
 {
 
 	private:
+
 	Brain* _brain;
+	
 	public:
 	Dog(void);
 	Dog(std::string type);
 	Dog(const Dog & src);
-	Dog operator=(const Dog &  src);
+	Dog & operator=(const Dog &  src);
 	virtual ~Dog(void);
 	virtual void makeSound(void) const;
 	std::string getType(void) const;

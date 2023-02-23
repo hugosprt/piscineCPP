@@ -1,28 +1,30 @@
 #include "Cat.hpp"
 
-Cat::Cat(const Cat & src)  : Animal(src), Brain()
+Cat::Cat(const Cat & src) : Animal(src)
 {
 	std::cout << "|Cat| Copy constructor called" << std ::endl;
-	*this = src;
 	this->_brain = new Brain();
+	*this = src;
 	return ;
 }
 
-Cat Cat::operator=(const Cat & src)
+Cat & Cat::operator=(const Cat & src)
 {
 	std::cout << "|Cat| Copy assignement operator called" << std ::endl;
-	for (int i = 0 ; i < 100 ; i++)
-	{
-		this->_brain->setIdea(src.getIdea(i), i);
-	}
+	if (this == &src)
+		return ( *this );
+	delete this->_brain;
+	this->_brain = new Brain();
+	this->_type = src._type;
+	*this->_brain = *src._brain;
 	return (*this);
 }
 
-Cat::Cat(void) : Animal(), Brain()
+Cat::Cat(void) : Animal()
 {
-	this->_brain = new Brain();
 	std::cout << "|Cat| default constructor called" << std ::endl;
-	
+	this->_brain = new Brain();
+	this->_type = "Cat";
 	return ;
 }
 
@@ -34,7 +36,7 @@ Cat::~Cat(void)
 	return ;
 }
 
-Cat::Cat(std::string type) : Animal(type), Brain()
+Cat::Cat(std::string type) : Animal(type)
 {
 	std::cout << "|Cat| Constructor with name called" << std ::endl;
 	this->_type = type;
@@ -43,7 +45,7 @@ Cat::Cat(std::string type) : Animal(type), Brain()
 
 void Cat::makeSound(void) const
 {
-		std::cout << "miaou miaou" << std::endl;
+		std::cout << "Miaou Miaou" << std::endl;
 }
 
 std::string Cat::getType(void) const

@@ -33,7 +33,7 @@ int main()
 // return 0;
 	
 	int n = 6;
-	Animal* animals[n];
+	 Animal* animals[n];
 	for (int i = 0 ; i < 6 ; i++)
 	{
 		if (i % 2 == 0)
@@ -69,7 +69,6 @@ int main()
 		}
 		
 	}
-	// Animal test;
 
 	for (int i = 0 ; i < 6 ; i++)
 	{
@@ -85,6 +84,19 @@ int main()
 		
 	}
 	delete j2;
+
+	std::cout << "-----------------------------------------" << std::endl;
+
+	Dog basic;
+	std::cout << "-----------------------------------------" << std::endl;
+	basic.setIdea("je veux manger", 1); 
+	{
+		Dog tmp = basic;
+		std::cout << tmp.getIdea(1) << std::endl;
+		std::cout << tmp.getType() << std::endl;
+	}
+	std::cout << basic.getIdea(1) << std::endl;
 	
+	// Animal animals2;
 
 }

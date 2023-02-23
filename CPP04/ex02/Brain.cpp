@@ -7,11 +7,11 @@ Brain::Brain(const Brain & src)
 	return ;
 }
 
-Brain Brain::operator=(const Brain &  src)
+Brain & Brain::operator=(const Brain &  src)
 {
 	std::cout << "|Brain| Copy assignement operator called" << std ::endl;
-	if (this == &src)
-		return (*this);
+	// if (this == &src)
+	// 	return (*this);
 	for (int i = 0 ; i < 100; i++)
 		this->_ideas[i] = src._ideas[i];
 	return (*this);
