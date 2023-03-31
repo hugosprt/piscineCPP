@@ -32,6 +32,7 @@ public:
     {
         const char *what() const throw();
     };
+    virtual void action( ) const = 0;
 
 protected:
     const std::string _name;
@@ -40,6 +41,6 @@ protected:
     const int _gradeToExecute;
 };
 
-std::ostream &operator<<(std::ostream &os, const Form &form);
+std::ostream & operator<<(std::ostream &os,const Form  &form);
 
 #endif // FORM_HPP

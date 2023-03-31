@@ -4,7 +4,6 @@
 
 Bureaucrat::Bureaucrat( void )
 {
-	
 	return;
 }
 Bureaucrat::Bureaucrat( const std::string name, const unsigned int grade ) :
@@ -86,7 +85,7 @@ std::string	Bureaucrat::getName( void ) const {
 	return ( this->_name );
 }
 
-void Bureaucrat::execute(Form const &form)
+void Bureaucrat::executeForm(Form const &form) const
 {
     try
     {
@@ -125,6 +124,6 @@ void Bureaucrat::signForm(Form &form)
 
 
 std::ostream &	operator<<( std::ostream & o,  Bureaucrat const & b ) {
-	o << b.getName() << ", bureaucrat grade " << b.getGrade();
+	o << b.getName() << ", bureaucrat grade " << b.getGrade() << std::endl;
 	return o;
 }

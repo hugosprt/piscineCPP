@@ -40,7 +40,7 @@ class GradeTooLowException : public std::exception {
 };
 
 
-void execute(Form const &form);
+void executeForm(Form const &form) const;
 private:
 
 std::string const	_name;

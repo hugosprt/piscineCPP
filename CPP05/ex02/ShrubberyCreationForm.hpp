@@ -11,11 +11,11 @@ class ShrubberyCreationForm : public Form
 public:
     ShrubberyCreationForm(const std::string &target);
     ShrubberyCreationForm(const ShrubberyCreationForm &src);
-    virtual ~ShrubberyCreationForm();
+     ~ShrubberyCreationForm();
 
     ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rhs);
 
-    virtual void execute(const Bureaucrat &executor) const;
+    void action() const;
 
 private:
     ShrubberyCreationForm();

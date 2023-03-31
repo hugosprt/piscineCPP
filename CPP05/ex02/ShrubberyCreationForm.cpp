@@ -27,26 +27,22 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return *this;
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
+void ShrubberyCreationForm::action(void) const
 {
   //  if (!isSigned())
     //    throw Form::NotSignedException();
-    if (executor.getGrade() > getGradeToExecute())
-        throw Form::GradeTooLowException();
-
-    std::ofstream file(_target + "_shrubbery");
-
-    if (!file.is_open())
-    {
-        std::cerr << "Cannot open the file." << std::endl;
-        return;
-    }
+    std::fstream file;
+    std::string file_name;
+    file_name = _target;
+    file_name.append("_shrubbery");
+    file.open(file_name.c_str(), std::ios::out | std::ios::in | std::ios::trunc);
+    if (!file)
+        std::cout << "ERROR CREATING FILE" << std::endl;
 
     file << "          &&& &&  & &&" << std::endl;
     file << "      && &\\/&\\*()_ /\\/&& &&" << std::endl;
     file << "        && ()_/{\\(_&&" << std::endl;
     file << "            &&&& &&  &&" << std::endl;
     file << "              &&" << std::endl;
-
     file.close();
 }

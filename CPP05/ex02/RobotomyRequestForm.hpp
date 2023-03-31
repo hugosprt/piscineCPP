@@ -16,10 +16,9 @@ public:
 
     RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
 
-    void execute(const Bureaucrat &executor) const;
+     void action(void)  const;
 
 private:
-    RobotomyRequestForm();
     std::string _target;
 };
 

@@ -16,10 +16,10 @@ public:
 
     PresidentialPardonForm &operator=(const PresidentialPardonForm &rhs);
 
-    virtual void execute(const Bureaucrat &executor) const;
+     void action(void) const;
 
 private:
-    PresidentialPardonForm();
+    
     std::string _target;
 };
 
