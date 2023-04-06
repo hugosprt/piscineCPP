@@ -85,12 +85,12 @@ std::string	Bureaucrat::getName( void ) const {
 	return ( this->_name );
 }
 
-void Bureaucrat::executeForm(Form const &form) const
+void Bureaucrat::executeForm(Form  &form) const
 {
     try
     {
         form.execute(*this);
-        std::cout << *this << " executed " << form << std::endl;
+        std::cout << this->getName() << " executed " << form << std::endl;
     }
     catch (std::exception &e)
     {

@@ -2,7 +2,7 @@
 #define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
-
+#include "Form.hpp"
 
 class Form;
 class Bureaucrat;
@@ -16,11 +16,13 @@ public:
 
     PresidentialPardonForm &operator=(const PresidentialPardonForm &rhs);
 
-     void action(void) const;
+    void execute(const Bureaucrat &executor) const; 
 
 private:
     
     std::string _target;
 };
+
+
 
 #endif // PRESIDENTIALPARDONFORM_HPP

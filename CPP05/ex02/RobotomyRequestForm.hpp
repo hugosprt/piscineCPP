@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-
+#include "Form.hpp"
 class Form;
 class Bureaucrat;
 
@@ -16,10 +16,12 @@ public:
 
     RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
 
-     void action(void)  const;
+    void execute(const Bureaucrat &executor) const; 
+
 
 private:
     std::string _target;
 };
+
 
 #endif // ROBOTOMYREQUESTFORM_HPP

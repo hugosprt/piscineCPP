@@ -12,7 +12,7 @@ class Form
 public:
     Form(const std::string &name, int gradeToSign, int gradeToExecute);
     Form(const Form &src);
-    virtual ~Form() = 0;
+    virtual ~Form();
 
     Form &operator=(const Form &rhs);
 
@@ -32,7 +32,11 @@ public:
     {
         const char *what() const throw();
     };
-    virtual void action( ) const = 0;
+
+    class NotSignedException : public std::exception
+    {
+        const char *what() const throw();
+    };
 
 protected:
     const std::string _name;

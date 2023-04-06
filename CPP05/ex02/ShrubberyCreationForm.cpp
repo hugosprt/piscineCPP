@@ -27,10 +27,12 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return *this;
 }
 
-void ShrubberyCreationForm::action(void) const
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
-  //  if (!isSigned())
-    //    throw Form::NotSignedException();
+   if (!getIsSigned())
+       throw Form::NotSignedException();
+    if (executor.getGrade() > this->_gradeToExecute)
+        throw GradeTooLowException();
     std::fstream file;
     std::string file_name;
     file_name = _target;
@@ -45,4 +47,5 @@ void ShrubberyCreationForm::action(void) const
     file << "            &&&& &&  &&" << std::endl;
     file << "              &&" << std::endl;
     file.close();
+    std::cout << executor.getName() << std::endl;
 }
