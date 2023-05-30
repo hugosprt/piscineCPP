@@ -15,6 +15,9 @@ public:
 
     void addNumber(int value);
     void print2() const;
+    int shortestSpan();
+    int longestSpan();
+    void addRange(const int start, const int end);
 private:
     std::vector<int> data;
     size_t max_size;
