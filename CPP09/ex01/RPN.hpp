@@ -4,7 +4,7 @@
 class RPNCalculator {
 public:
     RPNCalculator();
-
+	~RPNCalculator();
     void push(int num);
 
     void calculate(const std::string& operation);
