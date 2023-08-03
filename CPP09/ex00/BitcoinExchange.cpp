@@ -5,6 +5,23 @@
 
 BitcoinExchange::BitcoinExchange() {}
 
+BitcoinExchange::BitcoinExchange( const BitcoinExchange &toCopy ) {
+	
+	*this = toCopy;
+	return;
+}
+
+BitcoinExchange &BitcoinExchange::operator=( const BitcoinExchange &toTheRight ) {
+	
+    if (this == &toTheRight) {
+        return *this;
+    }
+	this->db = toTheRight.db;
+    return *this;
+}
+
+
+
 void BitcoinExchange::loadDatabase(const std::string& filename) {
     std::ifstream file(filename.c_str());
     if (!file) {
@@ -13,6 +30,7 @@ void BitcoinExchange::loadDatabase(const std::string& filename) {
     }
 
     std::string line;
+    getline(file, line); 
     while (std::getline(file, line)) {
         std::istringstream ss(line);
         std::string date;
@@ -66,6 +84,10 @@ void BitcoinExchange::processInputFile(const std::string& filename) {
                 std::cout << date << " => " << value << " = " << it->second * value << std::endl;
             }
         }
+ 
     }
 }
+BitcoinExchange::~BitcoinExchange()
+{
+} 
 

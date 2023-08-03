@@ -4,6 +4,25 @@
 
 RPNCalculator::RPNCalculator() {}
 
+RPNCalculator::~RPNCalculator()
+{
+}
+
+RPNCalculator::RPNCalculator(const RPNCalculator &toCopy) {
+	
+	*this = toCopy;
+	return;
+}
+
+
+RPNCalculator& RPNCalculator::operator=(const RPNCalculator &toTheRight) {
+	
+	if (this == &toTheRight) {
+		return *this;
+	}
+	return *this;
+}
+
 void RPNCalculator::push(int num) {
     stack_.push(num);
 }

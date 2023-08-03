@@ -10,6 +10,6 @@ int main(int argc, char* argv[]) {
     BitcoinExchange btc;
     btc.loadDatabase("data.csv");
     btc.processInputFile(argv[1]);
-
+    
     return 0;
 }

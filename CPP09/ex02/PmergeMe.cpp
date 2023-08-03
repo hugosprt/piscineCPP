@@ -10,6 +10,21 @@ PmergeMe::PmergeMe() {}
 
 PmergeMe::~PmergeMe() {}
 
+PmergeMe::PmergeMe( const PmergeMe &toCopy ) {
+
+	*this = toCopy;
+	return;
+}
+
+
+PmergeMe &PmergeMe::operator=( const PmergeMe &toTheRight ) {
+    
+	if (this == &toTheRight) {
+		return *this;
+	}
+	return *this;
+}
+
 void PmergeMe::read(const std::string& str) {
     int num = atoi(str.c_str());
     vec_.push_back(num);

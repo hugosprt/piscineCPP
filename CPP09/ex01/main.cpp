@@ -1,12 +1,12 @@
 #include "RPN.hpp"
 #include <iostream>
 #include <sstream>
-#include <vector>
+#include <deque>
 #include <iterator>
 #include <stdlib.h>
 
-std::vector<std::string> split(const std::string &s, char delim) {
-    std::vector<std::string> elems;
+std::deque<std::string> split(const std::string &s, char delim) {
+    std::deque<std::string> elems;
     std::stringstream ss(s);
     std::string item;
     while (std::getline(ss, item, delim)) {
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     }
     
     std::string input(argv[1]);
-    std::vector<std::string> tokens = split(input, ' ');
+    std::deque<std::string> tokens = split(input, ' ');
 
     RPNCalculator calculator;
 

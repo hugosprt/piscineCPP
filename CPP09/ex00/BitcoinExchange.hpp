@@ -7,9 +7,11 @@
 class BitcoinExchange {
 public:
     BitcoinExchange();
+    BitcoinExchange( const BitcoinExchange &toCopy );
+	BitcoinExchange& operator=( const BitcoinExchange &toTheRight );
     void loadDatabase(const std::string& filename);
     void processInputFile(const std::string& filename);
-
+    ~BitcoinExchange();
 private:
     std::map<std::string, double> db;
 };

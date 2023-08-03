@@ -6,7 +6,8 @@ class PmergeMe {
 public:
     PmergeMe();
     ~PmergeMe();
-
+    PmergeMe( const PmergeMe &toCopy );
+	PmergeMe &operator=( const PmergeMe &toTheRight );
     void read(const std::string& str);
     void sortAndPrint();
 
