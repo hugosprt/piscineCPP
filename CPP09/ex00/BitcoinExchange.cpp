@@ -44,6 +44,25 @@ void BitcoinExchange::loadDatabase(const std::string& filename) {
     }
 }
 
+bool isValidDateFormat(const std::string& date) {
+    if (date.length() != 10)
+        return false;
+
+    std::stringstream ss(date);
+    int year, month, day;
+    char separator1, separator2;
+
+    ss >> year >> separator1 >> month >> separator2 >> day;
+
+    if (ss.fail() || separator1 != '-' || separator2 != '-')
+        return false;
+
+    if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
+        return false;
+
+    return true;
+}
+
 void BitcoinExchange::processInputFile(const std::string& filename) {
     std::ifstream file(filename.c_str());
 
@@ -57,18 +76,20 @@ void BitcoinExchange::processInputFile(const std::string& filename) {
             std::istringstream ss(line);
             std::string date;
             std::string separator;
-
             if (!(ss >> date >> separator)) {
                 std::cerr << "Error: invalid input format in the line: " << line << std::endl;
                 continue;
             }
-
+            if ( !isValidDateFormat(date))
+            {
+                std::cerr << "Error: invalid date " << line << std::endl;
+                continue;
+            }
             double value;
             if (!(ss >> value)) {
                 std::cerr << "Error: value is missing in the line: " << line << std::endl;
                 continue;
             }
-
             if (value < 0) {
                 std::cerr << "Error: not a positive number." << std::endl;
                 continue;
@@ -77,7 +98,6 @@ void BitcoinExchange::processInputFile(const std::string& filename) {
                 std::cerr << "Error: too large a number." << std::endl;
                 continue;
             }
-
             std::map<std::string, double>::iterator it = db.find(date);
             if (it == db.end()) {
                 std::map<std::string, double>::iterator closest_it = db.end();
