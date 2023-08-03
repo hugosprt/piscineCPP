@@ -47,27 +47,37 @@ void BitcoinExchange::loadDatabase(const std::string& filename) {
 void BitcoinExchange::processInputFile(const std::string& filename) {
     std::ifstream file(filename.c_str());
 
-    if (!file) {
-        std::cerr << "Error: could not open file: " << filename << std::endl;
-        return;
-    }
+        if (!file) {
+            std::cerr << "Error: could not open file: " << filename << std::endl;
+            return;
+        }
 
-    std::string line;
-    while (std::getline(file, line)) {
-        std::istringstream ss(line);
-        std::string date;
-        std::string separator;
-        double value;
-        while (ss >> date >> separator >> value) {
+        std::string line;
+        while (std::getline(file, line)) {
+            std::istringstream ss(line);
+            std::string date;
+            std::string separator;
+
+            if (!(ss >> date >> separator)) {
+                std::cerr << "Error: invalid input format in the line: " << line << std::endl;
+                continue;
+            }
+
+            double value;
+            if (!(ss >> value)) {
+                std::cerr << "Error: value is missing in the line: " << line << std::endl;
+                continue;
+            }
+
             if (value < 0) {
                 std::cerr << "Error: not a positive number." << std::endl;
                 continue;
             }
-
             if (value > 1000) {
                 std::cerr << "Error: too large a number." << std::endl;
                 continue;
             }
+
             std::map<std::string, double>::iterator it = db.find(date);
             if (it == db.end()) {
                 std::map<std::string, double>::iterator closest_it = db.end();
@@ -75,6 +85,7 @@ void BitcoinExchange::processInputFile(const std::string& filename) {
                     if (it->first > date) break;
                     closest_it = it;
                 }
+
                 if (closest_it == db.end()) {
                     std::cerr << "Error: no valid date in database => " << date << std::endl;
                 } else {
@@ -84,9 +95,8 @@ void BitcoinExchange::processInputFile(const std::string& filename) {
                 std::cout << date << " => " << value << " = " << it->second * value << std::endl;
             }
         }
- 
     }
-}
+
 BitcoinExchange::~BitcoinExchange()
 {
 } 
