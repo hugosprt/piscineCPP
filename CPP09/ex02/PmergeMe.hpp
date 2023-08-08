@@ -9,7 +9,9 @@ public:
     PmergeMe( const PmergeMe &toCopy );
 	PmergeMe &operator=( const PmergeMe &toTheRight );
     void read(const std::string& str);
-    void sortAndPrint();
+	void fordJohnsonSort(std::vector<int> &vec);
+	void fordJohnsonSort2(std::list<int> &lst);
+	void sortAndPrint();
 
 private:
     std::vector<int> vec_;

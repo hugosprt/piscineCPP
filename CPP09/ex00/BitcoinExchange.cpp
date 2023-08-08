@@ -25,7 +25,7 @@ BitcoinExchange &BitcoinExchange::operator=( const BitcoinExchange &toTheRight )
 void BitcoinExchange::loadDatabase(const std::string& filename) {
     std::ifstream file(filename.c_str());
     if (!file) {
-        std::cerr << "Error: could not open file: " << filename << std::endl;
+        std::cerr << "data base corrupt" << filename << std::endl;
         return;
     }
 
@@ -41,6 +41,33 @@ void BitcoinExchange::loadDatabase(const std::string& filename) {
         } else {
             db[date] = value;
         }
+    }
+}
+
+
+bool isLeapYear(int year) {
+    if (year % 4 != 0) {
+        return false;
+    } else if (year % 100 != 0) {
+        return true;
+    } else if (year % 400 != 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+bool isValidDay(int year, int month, int day) {
+    if (month == 2) {
+        if (isLeapYear(year)) {
+            return day <= 29;
+        } else {
+            return day <= 28;
+        }
+    } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+        return day <= 30;
+    } else {
+        return day <= 31;
     }
 }
 
@@ -60,8 +87,9 @@ bool isValidDateFormat(const std::string& date) {
     if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
         return false;
 
-    return true;
+    return isValidDay(year, month, day);
 }
+
 
 void BitcoinExchange::processInputFile(const std::string& filename) {
     std::ifstream file(filename.c_str());
@@ -70,8 +98,10 @@ void BitcoinExchange::processInputFile(const std::string& filename) {
             std::cerr << "Error: could not open file: " << filename << std::endl;
             return;
         }
-
         std::string line;
+        std::getline(file, line);
+        if (line != "date | value")
+            std::cerr << "caca l'entete" << std::endl;
         while (std::getline(file, line)) {
             std::istringstream ss(line);
             std::string date;

@@ -17,3 +17,9 @@ private:
 };
 
 #endif // BITCOIN_EXCHANGE_H
+
+bool isLeapYear(int year);
+
+bool isValidDay(int year, int month, int day);
+
+bool isValidDateFormat(const std::string &date);

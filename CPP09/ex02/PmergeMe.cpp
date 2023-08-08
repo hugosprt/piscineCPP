@@ -31,6 +31,66 @@ void PmergeMe::read(const std::string& str) {
     list_.push_back(num);
 }
 
+void PmergeMe::fordJohnsonSort(std::vector<int>& vec) {
+    if (vec.size() <= 1) return;
+
+    for (size_t i = 0; i < vec.size() - 1; i += 2) {
+        if (vec[i] > vec[i + 1]) {
+            std::swap(vec[i], vec[i + 1]);
+        }
+    }
+    for (size_t i = 2; i < vec.size(); i++) {
+        int key = vec[i];
+        int j = i - 1;
+        
+        while (j >= 0 && vec[j] > key) {
+            vec[j + 1] = vec[j];
+            j = j - 1;
+        }
+        vec[j + 1] = key;
+    }
+}
+
+
+void PmergeMe::fordJohnsonSort2(std::list<int>& lst) {
+     if (lst.size() <= 1) return;
+
+    std::list<int>::iterator it = lst.begin();
+    while (it != lst.end()) {
+        std::list<int>::iterator next_it = it;
+        ++next_it;
+
+        if (next_it != lst.end() && *it > *next_it) {
+            std::swap(*it, *next_it);
+        }
+
+        if (next_it == lst.end()) break;
+
+        it = ++next_it;
+    }
+
+    for (it = ++lst.begin(); it != lst.end(); ++it) {
+        int key = *it;
+        std::list<int>::iterator j = it;
+        --j;
+        
+        std::list<int>::iterator temp = it;
+        while (j != lst.begin() && *j > key) {
+            *temp = *j;
+            temp = j;
+            --j;
+        }
+
+        if (*j > key) { // Handle the case where j is at begin()
+            *temp = *j;
+            *j = key;
+        } else {
+            *(++j) = key;
+        }
+    }
+}
+
+
 void PmergeMe::sortAndPrintVector(std::vector<int>& vec, const std::string& name) {
     std::cout << "Unsorted sequence in " << name << ": ";
     for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
@@ -40,8 +100,7 @@ void PmergeMe::sortAndPrintVector(std::vector<int>& vec, const std::string& name
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
 
-    // Sort the container using the standard sort function
-    std::sort(vec.begin(), vec.end());
+   fordJohnsonSort(vec);
 
     clock_gettime(CLOCK_MONOTONIC, &end);
 
@@ -67,8 +126,7 @@ void PmergeMe::sortAndPrintList(std::list<int>& list, const std::string& name) {
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
 
-    // Sort the container using the list sort function
-    list.sort();
+    fordJohnsonSort2(list);
 
      clock_gettime(CLOCK_MONOTONIC, &end);
      double duration = static_cast<double>((end.tv_sec - start.tv_sec) * 1000000000 +
